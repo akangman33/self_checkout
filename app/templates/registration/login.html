@@ -1,0 +1,50 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>商店消費查詢</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
+    <style>
+      td {
+        padding: 5px
+      }
+    </style>
+</head>
+<body>
+    <!--<nav class="navbar navbar-inverse navbar-fixed-top font-center"> -->
+      	<h1 align="center">商店消費查詢</h1>
+	</nav>
+
+	<form method="post" action="/accounts/login/">
+	{% csrf_token %}
+	<table align="center" style="margin-top:100px">
+	<tr> 
+	    <td>{{ form.username.label_tag }}</td>
+	    <td>{{ form.username }}</td>
+	</tr>
+	<tr>
+	    <td>{{ form.password.label_tag }}</td>
+	    <td>{{ form.password }}</td>
+	</tr>
+	<tr>
+		<!--我是next:{{ next }}-->
+	</tr>
+	<tr>
+	    <td></td>
+	    <td>
+	        <input type="submit" value="login" class="btn small-button" />
+	    </td>
+	</tr>
+	</table>
+	<input type="hidden" name="next" value="{{ next }}" /><!--重要!!若有next variable會導到accounts/profile-->
+	<!--<input type="hidden" name="next" value="/" />-->
+	</form>
+</body>
+</html>

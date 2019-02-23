@@ -1,0 +1,108 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    
+    
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">消費總覽</h1>
+      <!--first-->
+      <div class="row placeholders">
+        <div class="col-xs-8 col-sm-4 placeholder">
+            <h3>商品總類</h3>
+            <span class="text-muted"><h2><font color="#0000FF">{{ type_cnt }}</font></h2></span>
+        </div>
+        <div class="col-xs-8 col-sm-4 placeholder">
+          <h3>商品總數</h3>
+          <span class="text-muted"><h2><font color="#0000FF">{{ object_cnt }}</font></h2></span>
+        </div>
+        <div class="col-xs-8 col-sm-4 placeholder">
+          <h3>商品總額</h3>
+          <span class="text-muted"><h2><font color="#0000FF">${{ total_cash }}</font></h2></span>
+        </div>
+      </div>
+      <!--first_end-->
+      <!--main-->
+      <h3 class="sub-header">消費明細</h3>
+      <div class="table-responsive">
+        <table class="table table-striped">
+            <col style="width:18%">
+            <col style="width:27%">
+            <col style="width:20%">
+            <col style="width:18%">
+            <col style="width:7%">
+            <col style="width:5%">
+          <thead>
+            <tr>
+              <th>日期</th>
+              <th>ID</th>
+              <th>分類</th>
+              <th>數量</th>
+              <th>單價</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- {{records}} first step to filter records object -->
+            {% for record in records %}
+            <tr>
+              <td>{{record.date | date:"Y-m-d"}}</td>
+              <td>{{record.user}}</td>
+              <td>{{record.category}}</td>
+              <td>{{record.cnt}}</td>
+              <td>{{record.cash}}</td>
+              <td>
+              <form action="delete_record" method='post'>
+                {% csrf_token %}
+                <input type="hidden" value={{record.id}} name='delete_val'> <!--不印出id的方法-->
+                <input type="submit" class = "btn" value="delete">
+              </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      <!--main_end-->
+      <!--test--> 
+      <!-- 
+      <div class="th-wrapper">
+        <h3 class="sub-header">新增紀錄</h3>
+      </div>  
+      <div class="table-responsive">
+        <form action="/add_record" method="post">
+        {% csrf_token %}
+          <table class="table table-striped">
+          <col style="width:15%">
+          <col style="width:35%">
+          <col style="width:20%">
+          <col style="width:18%">
+          <col style="width:7%">
+            <thead>
+              <tr>
+                <th>日期</th>
+                <th>分類</th>
+                <th>金額</th>
+                <th>數量</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+              {% for field in record_form %}
+                <td>{{field}}</td>
+              {% endfor %}
+              </tr>
+            </tbody>
+          </table>
+          <div class="right-area">
+            <input type="submit" class="btn show-new-item" value="新增紀錄"/>
+          </div>
+        </form>
+        -->
+        <!--test_end-->
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

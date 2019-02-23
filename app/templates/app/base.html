@@ -1,0 +1,71 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css_tibame/bootstrap.min.css' %}" rel="stylesheet">
+    <!--
+    <link href="static/css_tibame/bootstrap.min.css" rel="stylesheet">
+    -->
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css_tibame/dashboard.css' %}" rel="stylesheet">
+    <!--
+    <link href="static/css_tibame/dashboard.css" rel="stylesheet">
+    -->
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!--<a class="navbar-brand" href="#">My Project</a>-->
+          <a class="navbar-brand" href="#">{{user}}</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/accounts/logout">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    {% block content %} {% endblock %} 
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!--老師補充js的補充套件開始 https://code.jquery.com/ 最新版 minified-->
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <!--補充套件結束-->
+    <!--套件2 bootstrap-datepicker
+      https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js-->  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+    <!--以下Jquery 語法操作-->
+    <!--等畫面Load進來會有個匿名函式被指定ID '#datepicker1'-->
+    <script>
+    
+    $(function(){
+      $('#datepicker1').datepicker({
+        formate:'yyyy-mm-dd'
+      });
+    })
+    </script>
+  </body>
+</html>

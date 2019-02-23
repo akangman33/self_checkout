@@ -1,0 +1,8 @@
+(Django_env) C:\Users\crea\Django\myproject2\mysite>python manage.py createsuperuser
+Username (leave blank to use 'crea'): admin
+Email address:
+Password:1-5q-T
+Password (again):
+This password is too common.
+Bypass password validation and create user anyway? [y/N]: y
+Superuser created successfully.

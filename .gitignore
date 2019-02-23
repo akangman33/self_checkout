@@ -1,0 +1,7 @@
+*.pvc
+*.swp
+*.sw0
+__pycache__
+*.sqlite3
+*.vscode
+.vscode

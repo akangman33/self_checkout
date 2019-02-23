@@ -1,0 +1,44 @@
+{% extends 'app/base.html' %}
+{% block content%}
+<div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+              <li class="item-bar"><a href="/">帳務總覽</a></li>
+              <li class="item-bar active"><a href="/settings">設定</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h3 class="page-header">分類設定</h3>
+            <form action="/add_category" method="post">  <!--http的請求通常是get or post-->
+                {% csrf_token %}
+                <div class="left-area">
+                <input type="text" name="add_category">
+                </div>
+                <div class="left-area">
+                <input type="submit" value="新增分類" class="btn show-new-item">
+                </div>
+            </form>
+          <table class="table table-scrollable">
+            <thead>
+               <tr>
+                <th>分類</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for category in categories %}
+              <tr>
+                  <td>
+                  <div class="col-sm-1">{{category.category}}</div>
+                  <div class="col-sm-1"><a href="/delete_category/{{ category.category }}">刪除</a></div>
+                  <br/>
+                  </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+      </div>
+      
+{% endblock %}
